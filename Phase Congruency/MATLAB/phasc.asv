@@ -1,0 +1,10 @@
+im = imread('lena.tif');
+subplot(2,2,1),subimage(im)
+tic
+[PC, or] = phasecongmono(im,3,3,2.1,0.55);
+nm = nonmaxsup(PC, or, 2);   % nonmaxima suppression
+bw = hysthresh(nm, 0.3, 0.2);  % hysteresis thresholding 0.1 - 0.3
+toc
+subplot(2,2,2), subimage(PC)
+subplot(2,2,3), subimage(nm)
+subplot(2,2,4), subimage(bw)
